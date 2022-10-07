@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4 Readings</title>
+</head>
+
+<body>
+    <h2>Forms in Javascript</h2>
+    <p>
+        They are made up of a form element that contains form controlls such as input menus,buttons and submit fields.
+        When it comes to forms theres plenty of ussability and correct mark up to do.
+    </p>
+    <h3>Accessing form elements</h3>
+    <p>
+        The legacy DOM has a useful attribute called document.forms that returns a collection of all forms
+        in the document in the order that they appear in the mark up
+        To return a collection of forms we have to use the index notation
+        const form = document.forms[0]
+        Sometimes instead of using a numerical index we can use the name attribute of the form in order to be able to
+        identify it
+        const form = document.forms.search;
+        Normally in the above example square bracket notaion can be used to avoid confusion in declaring the form.
+        const form = document.forms['search'];
+    </p>
+    <h3>Form Objectives and Methods</h3>
+    <p>
+        The form.submit() method will submit the form automatically.
+        The form.reset() metthod will reset all the form controls back to their intial values specified in the HTML.
+        The form.action='/an/other.url'
+    </p>
+    <h3>Form Events</h3>
+    <p>
+        The form event occurs when an element is focused upon. In this case of an <input> element, this is when the
+        cursor is placed inside an element
+        either by clicking or tapping on it or navigating to it using the keyboard.
+        const input = form.elements.searchInput;
+        input.addEventListener('focus',()=>alert('focused'), false);
+        The blur event occurss when the user moves the focus away from the form element after changing it.\
+        so if a user clicks in an input field and makes no changes and then clcks elsewhere, the change event wont be
+        recognisable but a blur will occurs
+
+    </p>
+    <h4>Submitting a Form</h4>
+    <p>This is probably the msot importnt event occuring when the form is submitted
+        normally this will send the content of the form to the server to be processed.
+        We can use JavaScript to intercept the form before its sent by adding a submit event addEventListener
+        const form = document.forms['search'];
+        form.addEventListener('submit'), search,false);
+        function search(){
+        alert('form submitted');
+        }
+        One thing thats imperative to note is that you can prevent the form from submitting to the URL by using
+        preventDefault() method
+        funtion search(event){
+        alert('Form Submitted');
+        event.preventDefault();
+        }
+    </p>
+    <h4>
+        Retrieving and Changing Values From a Form
+    </h4>
+    <p>
+        Text elements attributes have a value property that can be used to retrieve the text inside the field.
+        We can report back what the user has searched for.
+
+        function search(event){
+        alert('You Searched for: ${input.value}')
+        event.preventDefault();
+        }
+
+    </p>
+    <h4>
+        Form Controls
+    </h4>
+    <p>
+        There are other events that can help to make web pages more interactive
+        Some common types of form controls include
+        <li>input fields - these include text, passwords, check boxes, radio buttons and file uploads</li>
+        <li> select menus for dropdown lists of options</li>
+        <li>Text area - elements for longer text entry</li>
+        <li> Submit - elemts for submitting and resettings forms</li>
+    </p>
+    <h2>Input Fields</h2>
+    <p>
+        These are the most common type of form controlls but there are several types of forms controlls;
+    <ol>
+        <li>Text Input fields - The default of this input is text which is used for enetering a shortpiece of text such
+            as a username</li>
+        <li>Password Input Fields - This used to enter peassswords and secret information. It works the sam e way as the
+            type=text except the characters are concealed as they are entered so they are unable to be read on the
+            screen.
+        </li>
+        <LI>Checkbox Input Field - They are created using the checkbox type=checkbox. Used to select different options
+            that can be checked true or false or left
+            The user can select more than one checkbox from the list . Please note that a Checkbox can be set to true
+            using JavaScript by settin g its checked property to true</li>
+
+
+    </ol>
+    </p>
+    <h3>Radio Button Input fields</h3>
+    <p>
+        They are created using input fields type= 'radio'. They allow users to check on an option if it is true or not.
+        They provide an exclsive array of option so that only one can be selected. Each radio button has a set of rules
+        for either true or false
+        depending on whether it is selected or not.Rdio buttons can alslo be checked initially using the checkmed
+        attribute in the HTML
+    </p>
+
+    </p>
+    <H3>Hidden Input fields</H3>
+    <p>
+        Hidden input fields can be created using type='hidden'.
+        They arent displayed by the Browser but they have a value attribute that can contain information that is
+        submitted with the form
+        they are often used to sendx information such as settings or information that the user has already provided.
+        The information in this is no way secret as it is visible in the HTML, so this shouldnt be used for sensitive
+        data
+
+    </p>
+    <h3>File Input fields</h3>
+    <p>can be created using input type='file'
+        these are used to upload files </p>
+    <h3>
+        Dropdown Menus
+    </h3>
+    <p>
+        They can be used to selct one or more options from the selecct values
+    </p>
+    <h3>
+        Text Area
+    </h3>
+    <p>
+        A text area element is used to enter long pieces of text over multipe lines such aas a comment or blogpost
+        They work in a similar fashion as input fields.
+
+    </p>
+    <h3>Buttons</h3>
+    <p>
+        The default type of a button is submit.
+        Another type we have already seen is the reset button whixh willl reset all the form fields to their origianl
+        settings
+        The other type is simply button. It doesnt need to be inside a form element and has no default behaviour.
+        Simply creates a clickable button that can have an eventListener attached to it.
+    </p>
+
+<h2>Object Oriented Programing in Javascript</h2>
+<p>
+    This a style of programming that involves separating the code into objects that have properties and  Methods
+    it keeps the related pieces of dcode encapsulated in object thatmaintainstate throughout the  life of the program.
+    There are three main concepts of OPP and these are 1( Encapsulation, Polymorphosim and Inheritance)
+
+</p>
+<h4>Encapsulation</h4>
+<p>The innner functions are kept hidden while the outer workipng parts are visible to the user.
+This involves keeping all the Programming logic inside and an object and making methods available to implement fully the methods without the 
+outside world knowing how its done</p>
+<h4>Polymorphosim</h4>
+<p>
+This means various objects can share the same method but also have the ability to override shared methods with a more specific implementation
+</p>
+<h4>Inheritance</h4>
+<p
+>
+    In OPP this means we can take a feature of something that is already working somewhere and implememtnthe same code elsewherere
+    We can the improve on its functionality  by adding new properties and methods
+</p>
+<h4>Classes</h4>
+<p>
+    This uses a class to define the blueprint of an object. Objects are createdd for instances of classes and inherit all the properties
+    and methods of the classes
+    Constructor functions can be used to creatw instances of the object
+    A mixi method can be used to add properties andmethods from other objects
+    Polymorphism allows objects to overide share methods with a specific implementation
+    Methods can be borrowed from other  objects. 
+
+</p>
+</body>
+
+</html>
