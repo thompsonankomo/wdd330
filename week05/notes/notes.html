@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+</head>
+
+<body>
+    <h1>
+        Test and Debugging
+    </h1>
+    <h2>Errors, Exceptions and warnings</h2>
+    <p>
+        Normally errors are caused when something gies wring and needs to be fixed.
+        Errors are usually caused by one of the following
+    <ul>
+        <li>
+
+
+            System Error - this happens when theres a problem with the system or external devices withwhich the cprogram
+            is interacting with.
+        <li>Programmer Error- these are caused by Programmers They contain incorrect or faulty code. It could be
+            something as simple as a typo.</li>
+        <li>User Error - this is when the user has entered incorrect data.
+        </li>
+        </li>
+    </ul>
+    <p>
+        As programmers it can be a complex task to fix the code especially the root of the error.
+        Programmer errors are our and we should allit takes to make sure that they are eliminated.
+        We do this by using simple code that easy to follow and to understand
+        User errors we try to alleviate them by making sure we predict any possible interactions that may throw an
+        error.
+        The programs must be designed in a way that makes the user not amake an error. Thes might be called Programmer
+        erros as well.
+        .
+    </p>
+    <h3>Exceptions</h3>
+    an error that produces a return value that can then be used by the program to deal with the error.
+    <h4>
+        Stack Traces
+    </h4>
+    <p>
+        an exception will also produce a stack trace.
+        this is simply a sequence of functions and methods that lead to the origin of the error.
+        A stack trace will work backwards from the poiunt at which the error ocuured to identify the original function
+        or method that started trhe sequence.
+
+    </p>
+    <h3>Warnings</h3>
+    <p>
+        This can occur if there isnt enough errors to make the program to crush.
+        The program can the coninue to run even if theres an error.This can be problematic if it is not solved.
+        When a run time error occurs in the browser, the HTML will continue to work but thee JavaScript will stop
+        workingin the background.
+        If a warning occurs the JavaScript will continue to run although possibly incorrectly.
+    </p>
+    <h3>Importance of Testing and Debugging</h3>
+    <p>
+        A programmer should ensure that any mistakes are found in the developmental area so that they can be easily
+        fixed.
+        When exceptions are caught and dealt with and the code is teseted vigorously it minimizes thepossiblity fo
+        almost all of these errors.
+
+
+    </p>
+    <h3>Strict Mode</h3>
+    <p>
+        Writing code in this mode can help improve its clarity and speed
+        Since it follows its conventions, this will throw exceptions if any are used.
+        Strcik mode requires this to used at the start of each code at the start "use Strict";
+        This will then be picked by any JavaScript engine that uses trict mode.
+        If the engine does not support strict mode the string will just be ignored.
+
+
+    </p>
+    <h3>Linting Tools</h3>
+    These tools can be used to test the quality fo the JS code.
+    Tools like JS Lint, JS Hint, and ES Lint.
+    They highlight any slopy programming practices or syntax errors.
+    They will complain if certainstykes of programming are not followed like indentantion as an example.
+    They are also useful for enforcing a programming style guide and is useful when you are working in Teams as it
+    ensures everybody follows the same conventions.
+    One option is to install a linting tool on themachine or programming environment.
+
+    </p>
+    <h3>Feature Detection</h3>
+    <p>
+        This is the most recommended way to determine Browser support.
+        This is done using an if statement to check whether an object or method exists before trying to call the method.
+        This method guarantees that the method is only called if it actually exists and fails gracefully without any
+        exceptions being thrown, if the mothod does not exist.
+        Modernizr - this is a library that offers any easy way to implement feature detection and Can Iuse? is another
+        useful feature resource for checking with features which are currently supported in differnet browsers.
+
+
+    </p>
+    <h2>
+        Debugging in the Browser
+    </h2>
+    <p>
+        This is the process of finding out where the bug occurs in the code and then dealing with it.
+        Often times the errors in the code do not start where they originate from.
+        Its useful to run the progrsam and check to see where errors are highlighted.
+        When doing this it iuseful to create breakpoints.
+        The Breakpoint halt the progress of the code and allows us to view thevalue of differnet variables at that point
+        in the program.
+        There are a numbers of ways of Debugging JavaScript code.
+
+    </p>
+    <h4>
+        The Trusty Alert
+    </h4>
+    <p>
+        The most basic form of debugging is to use the alert() method to show a dialog certain points of the code.
+        As an example
+
+        function amIOldEnough(age){
+        if (age=12){
+        alert(age);
+        return "No, sorry.";
+        }else if (age<18){ "return only if you are accompanied by an adult" ; } else return "Yep Come In" ; } <p>Using
+            alerts was the only option for debugging in the practices
+            JavaScript has evolved ever since that and the use of alert methods has been discouraged,
+    </p>
+    <h3>
+        Using the Console
+    </h3>
+    <p>Most modern JavaScript environments have consoles objects that provide a number of methods for logging
+        information and debugging.
+    </p>
+    <h5>The console.log Method</h5>
+    <p>
+        we have already seen and used the console.log method()
+        this is used to log the values of variables at different stages
+
+    </p>
+    <h5>The console.trace()</h5>
+    <p>
+        This method will log an interactive stack trace in the cosnole
+        This will show the functions that were called in the lead up to an exception occuring while the code is running
+    </p>
+    <h2>Debugging Tools</h2>
+    <p>Most modern browsers have a debugging tool that allows to set up breakpoints in your code that will pause at
+        certain points.
+        One of the most powerful tools is the Debugger Keyword.
+        This will create a breakpoint in your code that will pause the xecution of the code and allow you to see what
+        the program is currently up to.
+
+
+    </p>
+    <h3>Error Objects</h3>
+    <p>an error object can be created by the host environment when the exception occurs or it can be created in a cod
+        eusing a constructor function
+        const error = new error
+        There are seven more error objects used for a specific purpose
+        These are
+    <ul>
+        <li>
+            Eval error - This is only retained for backwards compatibility
+        <li>RangeError - Is thrown when a number is outside the allowable range of values</li>
+        <li>ReferenceError - is thrown whena refernece is made to an item that doesnt exist</li>
+        <li>SyntaxError - when there is an orrr in the code syntax</li>
+        <li>TypeError -when there is an error in the type of values used</li>
+        <li>URIError - is known when there is a problem in encoding and decoding the URL</li>
+        <li>InternalError-- no standard error that is thrown when an eror occurs in the Javascript engine</li>
+        </li>
+
+    </ul>
+    <p>
+    All error objects have a number of properties
+    </p>
+
+</body>
+
+</html>
