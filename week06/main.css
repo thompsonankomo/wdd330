@@ -1,0 +1,179 @@
+:root {
+    --primary: yellow;
+    --school: green;
+    --personal: var(--primary);
+    --light: #eee;
+    --dark: navy;
+    --danger: red;
+    --shadow: rgb(153, 142, 142);
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: initial;
+
+}
+
+body {
+    background: var(--light);
+    color: var(--dark);
+}
+
+section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+h3 {
+    color: var(--dark);
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+h4 {
+    color: var(--dark);
+    font: size 0.87rem;
+    font-weight: 400;
+
+
+}
+
+.greeting.title {
+    display: flex;
+
+}
+
+.greeting.title input {
+    margin-left: 0.5rem;
+    flex: 1 1 0%;
+    min-width: 0;
+
+}
+
+.greeting.title .greeting input {
+    color: var(--personal);
+    font-size: 1.rem;
+    font-weight: 700;
+
+}
+
+create-to-do input[type="text"] {
+    display: block;
+    width:100%;
+    font-size:1.125 rem;
+    padding:1 rem 1.5rem;
+    color:var(--dark);
+     background-color:white;
+    border-radius:1.5rem;
+    box-shadow:var(--shadow);
+    margin-bottom: 1.5rem;
+
+.create-to-do .options{
+display: grid;
+grid-template-columns:repeat(2, 1fr);
+
+}
+.create-to-do .options label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:1.5rem;
+    background: white;
+border-radius: 0.5rem;
+box-shadow: var(--shadow);
+cursor: pointer;
+
+}
+.bubble{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height:20px;
+border-radius: 50%;
+border: 2px solid blue;
+box-shadow: var(--personal);
+
+}
+.bubble.personal{
+    border-color: var(--personal);
+
+    ;
+}
+.create-to-do .options label div{
+    color: var(--dark);
+    font-size: 1.3rem;
+    margin-top: 1rem;
+
+}
+.create-to-do input [type="submit"]{
+    display: block;
+    width: 100%;
+    font-size: 0.9rem;
+    padding:1.3rem;
+    color:orangered;
+    background-color:var(--danger);
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+
+}
+todo-list .list{
+    margin: 1rem 0;
+}
+todo-list todo-item{
+    display: flex;
+    align-items: center;
+    background-color:light blue;
+    padding:1rem;
+border-radius: 0.5rem;
+box-shadow: var(--shadow);
+margin-bottom: 1rem;
+
+
+}
+.todo-item label{
+    display: block;
+    margin-right: 0.97rem;
+    cursor: pointer;
+
+}
+.todo-item .content{
+    flex: 1 1 0%;
+}
+.todo-item .todo-content input{
+color: var(--dark);
+font-size: 1.3rem;
+
+}
+.todo-item .options{
+    display: flex;
+    align-items: center;
+
+}
+.todo-item .actions button{
+    display: block;
+    padding: 0.84rem;
+    border-radius: 0.3rem;
+    color:white;
+    cursor: pointer;
+
+}
+.actions .edit{
+    margin-right: 0.5rem;
+    background-color: var(--primary);
+    
+}
+actions .delete{
+    margin-right: 0.5rem;
+    background-color: var(--primary);
+    
+}
