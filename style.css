@@ -23,3 +23,11 @@ font-family: Georgia, 'Times New Roman', Times, serif;
 padding: 8px;
 
 }
+footer{
+    padding: 7px;
+    text-align: center;
+    font-size: 11px;
+    background-color: navy;
+    color: white;
+    text-transform: uppercase;
+}
