@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Further Functions</title>
+</head>
+
+<body>
+    <h3>Further Functions</h3>
+    <h4>Properties and Methods</h4>
+    <p>
+        The fact that functions are first class objects means they can have proper properties and methods.
+
+        lets use the square() function that we wrote in chapter 4
+
+        function square(x){
+        return x*x;
+        }
+        If we query the length property we can see that it accepts one parameter.
+
+    <h4>Call and Apply Methods</h4>
+    <p>the call() method is used to set the value of this inside a function to an object that is provided
+        as the first argument.
+        In the following example, the sayHello() function refers to an unspecific object called this that has a
+        property,
+        property name.
+
+        function sayHello(){
+        return`Hello my name is ${this.name}
+        }
+        we can create some objects that have a name property, then use the call() function to invoke the
+        sayHello()function
+        providing each object as an argument.
+        This will then take the value of this in the function.
+        If the function that has been called requires any parameters, these need to be provided as arguments after the
+        first argument which is always the value of this.
+
+        Lets update the function sayHello() to give a more generalized greeting
+
+        function sayHello(greeting='Hello'){
+        return`${greeting}, my name is ${
+        this
+        }
+        if a function doesn't refer to an object as this in the body, it can still be called using the call()function
+        but you need to provide null as its first argument.
+        As an example we could call the square() function using the call() method like so:
+
+        square.call(null,4)
+
+        The apply()method works in the same way except the arguments of the function are provided as an array even if
+        there's only one argument.
+
+        These two are powerful methods as they allow generalized functions to be written that are not tied to specific
+        cobjects
+        This provides us the users with the flexibility o f how the functions can be used.
+
+    </p>
+
+    <p>
+    <h3>Custom Properties</h3>
+    There is absolutely nothing that can stop you from adding a description inside a function in the same way
+    that you can add properties to any object in JavaScript
+
+    <h4>Memoization</h4>
+    This is a useful feature because it provides caching or Memoization
+    Once a function takes a lot of time to return the value, we can save the result in a cache property.
+    If the same argument is used again later then we can load from the cached property.
+
+    for example, we could rewrite the square function so that it saves each result in a cache object that is the result
+    of the
+    property of the function.
+
+    function square(x){
+    square.cache =square.cache|| {};
+    if (!square.cache = square.cache[x]){
+    square.cache[x = x*x;]
+    }
+    return square.cache[x]
+    }
+    </p>
+    <P>
+    <h4>Immediately Invoked Function Expressions</h4>
+    These are sometimes known as IIFFE.
+    These are invoked as soon they are defined
+    The function also has to made into an expression which is done by placing the whole declaration inside parentheses
+    as an example.
+    These are also useful way of performing a task while keeping any variables wrapped up within the scope of
+    a function.
+    this means that the Global name space is not polluted with lots of variable names
+    </P>
+    <p>
+    <h4>Temporary Variables</h4>
+    There is no way to remove a variable from a scope on ce it is defined or declared.
+    Placing any code that uses IIFFE will ensure its only available while the IIFFE is invoked then it will disappear.
+
+    <h4>Initialization Code</h4>
+    An IIFFE can be used to set up any initialization code that there will be no need for again.
+    An IIFFE will be invoked once and can set up as many variables as it can at that particular time.
+    This can set up any variables, event handlers when the page loads.
+
+    <h4>Functions that define and rewrite themselves</h4>
+    The dynamic nature of JavaScript is that a function is not only able to call itself but define itself and even
+    redefine itself
+    This is done by assigning an anonymus function to a variable that has the same name as the function.
+    <h4>Init-Time Branching</h4>
+    this technique can be used with the feature detection to create functions that write themselves known as init-time
+    This enables functions to work well on their own without engaging the Browser. and avoid checking features every time they are involved
+
+    function ride(){
+        if (window.unicorn){
+            ride = function(){
+                // some code that uses the brand new and sparkly unicorn methods
+                return 'Riding on a unicorn is the best!';
+            }
+            else {
+                ride = function(){
+                    // some code that uses the older pony methods
+                    return ' Riding on a pony is still pretty good';
+
+                }
+                return ride 
+            }
+        }
+    }
+    after rewriting the function towards th end we will recall it again so that the re written function
+    is now invoked and the relevant value returned. One thing to be aware of is that the function is now invoked
+     and the relevant value returned.
+    Once the function has been invoked its rewritten based on the browser capabilities. We can check this by inspecting the function without invoking it
+    
+    <h4>Recursive functions</h4>
+    This is the function that invokes itself until certain conditions are met.
+    This is a useful tool to use when iterate processes are involved.
+    a common example is a function that calculates the factorial of a number.
+
+    <h4>Call Back Functions</h4>
+    These are used to facilitate event driven asyncronous programming
+    One piece of code will be processed at a time
+    Instead of waiting for an event  a call back can be used  thats invoked when the event happens.
+    Events can be DOM such as click and keypress
+    They can also be events such as completion of a file, dat returned from a database, or the result of a complex operation
+
+
+Heres an example of a function called wait() that accepts a call back. To simulate an operation that takes sometimecto happen  we can use
+the setTimeout() function to call the callback after a given number of seconds
+function wait(message, callback,seconds){
+    setTimeout(callback, seconds *1000);
+    console.log(message)
+}
+
+Now lets create a callback function
+function selfDestruct(){
+    console.log('BOOM!');
+}
+If we invoke the wait()function then log a message to the console we can see how Javascript works asynchronously
+When the wait() function is invoked any code inside it is run.
+This means that control is handed back to the program and the next line in the program is run.
+This demonstrates that the setTimeOut()function did not block the rest of the program.
+This is called the JavaScript event-loop .
+
+Remember only one task can happen at a time.
+
+<h4>Call Back Hell</h4>
+ The increase in the use  of asynchronous programming in JavaScript has ensure that more and mmore code is used
+ This means that the code can be messy and sphaghetti code.
+ This is where more than one code is used resulting in a number of nested blocks that are difficult to comprehend
+ Call back Hell is therm used to refer  to this tangled mess of code and its such a common issues.
+
+ <h4>Promises</h4>
+ This represents the future result of an asynchronously operation. Promises do not do anything
+ Promises dont do anything that cant already to be used callbacks but they help simplify the process and avoiid the convoluted code that can
+ result from using multiple callbacks.
+ A settled promise can result in two different outcomes
+ <ol>
+    <li>
+        Resolved - the asynchronous operation was completed successfully
+    </li>
+    <li>
+        Rejected - the asynchronous operation didnt work as expected wasnt successfully completed or resulted in an error
+
+    </li
+    
+ </ol>
+ Both these outcomes will return in any relevant data. and youy can take the appropriate action based onn the outcome of the promise.
+ 
+ <h4>Creating a Promise</h4>
+ A promise is created using a Constructor function. This takes a function called an executor as an argument.
+It also accepts two functions as arguments the resolve() function is called if the operation is unsuccessful and the
+reject() function is called if the operation fails. The general layout of a promise can be seen in the code below.
+
+const promise = new Promise ((resolve, reject)=>{
+    //initialization code comes Here
+    if (success){
+        resolve(value);
+    }
+    else{
+        reject(error);
+    }
+})
+<h4>Dealing with a Settled Promise</h4>
+Once a promise has been settled the then() method can then be used to deal with the outcome.
+This methods accepts two arguments. The first is a fulfillment action plan thats called when a promise is resolved.
+()
+The second argument is a rejection function thats called if the promise is rejected .
+The then() and catch() methods can be chained together to form a succint operation of how to deal with the outcome of the promise.
+
+
+
+
+
+    </p>
+</body>
+
+</html>
