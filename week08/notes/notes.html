@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes for Week 8</title>
+</head>
+<body>
+   <h2>
+    Transforms and Transitions
+   </h2>
+   <h3>
+    Transforms
+   </h3>
+   <p>
+The css3 transform property lets u translate, rotate, scale  and skew any element on the page.
+This also give you unprecedented control over many more aspects of the elements appearance.
+We can manipulate an elements appearance using transform functions.
+<h4>Translation</h4>
+These allow you to move elements from left , right, up or down.
+They are similar to a behavior of position:'relative=' when declaring top and left or up and down
+   along the x and y axes.
+   When you employ a translation function you are moving elements without impacting the flow of the document.
+   A translated element can only be moved relative to its current position.
+the translate (x,y)function moves an element from left and y from the top
+transform: translate(45px, -45px)
+if you want to move an element vertically you use the translatex function or the translatey functions respectively.
+to move up along the y axis by 30px include :
+transform: translateY(-30px)
+It is important to note that transforms dont work on inline elements
+
+<h4>Scaling</h4>
+The scale(x,y) scales and element by the defined factors horizontally then vertically
+this is shown by the following transform: scale(1.5,0.25)
+As with translate you can use the scaleX and scaleY
+A scaled element will grow outwards from or shrink inwards towards its center.
+In other words the elements will stay at the same place asi its dimensions change.
+To change this you can include the transform origin property
+.ad-ad2 h1:hover span{
+   color:#484848;
+   transform:translatex(40px) scale(1.5);
+   Note that a new transform shouldnt be declare because of the cascade, a second transform would override the first.
+   To declare multiple transformations we declare the scaling towards the end of that space separated list.
+   Its also important to remember that scaling has no issues with the document flow.
+   Transforming does not cause a reflow.
+   <h4>Rotation</h4>
+<p>
+   The rotation element rotates a function or an element around the  point of origin by a specified angle value.
+   The default origin is the elements  centre.
+   Angles are declared in  degrees with positive one going clockwise and the negative ones going anti clockwise.
+
+   .ad-ad2 h1:hover span{
+      color:#484848;
+      transform:rotate(10deg) translateX(40px)
+   
+   }
+   In the above example we are rotating the span by 10 degrees clockwise-adding to the effect of the text, thats just been dealt a powerful uppercut
+   We are declaring the rotation before the translation so that it can be applied first.
+   Remember that transforms are applied in the order provided.
+   In this case the span will be rotated 10 deg clockwise and then moved 40px along the rotated x axis.
+   </p>
+   <h1>Transitions</h1>
+   Animation ahs certainly been possible wit JavaScript, but native CSS transitions generall require less client-side processing so that they usually appear smoother.
+   Transitions allow the values of CSS properties to change overtime essentially providing simple animations
+   CSS transitions are declared along with the regualr styles on an element
+   Here are the steps to create a simple transition using only css3
+   <ol>
+      declare the original state of the  element in the default style declaration
+      declare the final state of your transitioned element; for example. a:hover state.
+      include the transition functions in your default style declarations using the transition properties,  including the transform-property ,the transform-duration,transitions-timing-function and transition delay.
+
+   </ol>
+
+<p>
+   <h4>Transition Property</h4>
+   This defines the CSS properties of the element that should be transitioned with all of the properties being default.
+   You can provide any number of CSS properties to the transition-property declaration, separated by commas,
+
+If you want to transition more than one property but all of them comma-separate them.
+
+<h4>The transition Duration Property</h4>
+This sets how long the duration -property, has no effect thats because we will still need to specify the duration fo the transition.
+
+<h4>The transition-timing-property</h4>
+<p>
+   this lets you control the pace of the transition in even more granular detail.
+   the most common timing functions include terms. ease. linear, ease-in, ease-out, or <ease-in-out></ease-in-out>
+   The default ease haa slow start and  then speeds up and ends slowly
+   linear creates a transition that animates at a constant speed
+   Ease-in-out is similar to ease but accelerates more sharply at the beginning.
+   the opposite ease-out start at electric speed. then slows progressively as it reaches the conclusion of the transition.
+
+   The best way to familiarize around them is to play around and practice more often until they become second nature.
+   In addition to the predefined functions that are set,and developer defined functions also you can divide the transition over the equidistant field
+   With the steps function you define any number of steps that you are willing to take and the direction of either start or end.
+   for example step(5, start) would jump through the equidistant steps of 0%, 20%, 40%, 60% and 80%
+   steps(5,end) would jump through the equidistant steps o 20% 40% 60% 80% and 100%
+
+   <h4>The transiton Delay -property</h4>
+By using this it is possible to  introduce a delay before the transition actually happens
+Normally a transition begins immidiately so th default is 0.
+a 5oms is enough time to make sure that they hover over our advertisement.
+
+<h4>The Transition shorthand property</h4>
+The transition Property is shorthand for the four transition properties just described.
+.ad-ad2 h1 span{
+   transition-property:transform;
+   transition-duration:0.2s;
+   transitions-timing-function:ease-out;
+   transition-delay:50ms;
+}
+ Now all these are going to be combined in a shorthand syntax
+ .ad-ad2 h1 span{
+   transition:transform 0.2s ease-out 50ms;
+ }
+ Note that the properties in shorthand syntax can be in  any order.
+ If a delay is included you must also include a  duration and the duration must  precede the delay.
+
+ <h4>Multiple Transitions</h4>
+ These allow for multiple transitions in one call.
+ If you want your properties to transition at different rates  or if you just want a select few to have a transition effect, include them as a comma separated list containing a minimum, th e transition property and transition duration for each.
+ Simple include each value in a comma separated list using the same order as transition property. for all long hand transition properties.
+ You can also use the shorthand to specify multiple transitions at different durations delays and timing functions.
+ If you want to change both properties at the same rate and delay you can include both property names
+ when using all keyword, all the properties transition at the same rate, speed and delay.
+ transition:all 0.2s ease-out 50ms
+
+</p>
+<h1>
+   Canvas
+</h1>
+<p>
+   With HTML5's Canvas API we are no longer limited to drawing rectangles on our sites.
+   we can draw anything we can imagine all through JavaScript.
+   We can draw shapes and lines, arcs, text,gradients and patterns.
+   Canvas gives us the power to manipulate pixels in images and even video.
+   The Canvas 2D context spec is supported in:
+   <li>Safari 2.0+</li>
+   <li>Chrome 3.0+</li>
+   <li>Firefox 3.0+</li>
+   <li>Internet Explorer 9+</li>
+   <li>Opera 10+</li>
+   <li>iOS(Mobile Safari)1.0+</li>
+    <h3>Creating a canvas element</h3>
+    <p>
+      The first step to creating a canvas element is to create or add a canvas element to the page.
+      <canvas>Sorry! your browser doesn't support</canvas>
+      the text in between the canvas tags will be shown if the canvas element is not supported.
+      Since drawing on the canvas is done using JavaScript, we'll need a way to grab the element from the DOM.
+      We'll do so by giving our canvas an id;
+      When our page is ready we will call a JavaScript we will start by calling  JavaScript function.
+      We will add our JQuery document,ready check toa script element at the bottom of the page.
+      <script>$('document').ready(function(){
+        draw();}); </script>
+      The canvas element takes both a width and a height attribute, which should also be set:
+      <canvas id="mycanvas" width="200" height="200">Browser doesn't support canvas</canvas>
+      Finally lets add a border to our canvas to visually distinguish it on the page using some CSS.
+      Canvas has no default styling, so ist difficult to see where it is on the page unless you give it some kind of border.
+      #mycanvas{
+         border:dotted 2px black;
+      }
+      <h3>Drawing on the Canvas</h3>
+      all drawing on the canvas happens via the Canvas JavaScript API.
+      We have called a function draw()when our page is ready, so lets go ahead and create that function.
+      <script>function draw(){
+         var canvas = document.getElementById("myCanvas")</script>
+      <h3>The Canvas Coordinate System</h3>
+      <p>The coordinate system in the canvas is a bit different from the cartesian coordinate system we learned in Maths
+         In the canvas coordinate system, the top-left corner is(0,0)
+         If the canvas coordinate is 200pixels, then the bottom right corner is (200,200)</p>
+
+    </p>
+
+
+</p>
+
+
+
+
+
+
+
+</p>
+
+</body>
+</html>
