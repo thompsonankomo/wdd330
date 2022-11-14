@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Window Object</title>
+</head>
+<body>
+    <h2>The Window Object</h2>
+    <p>
+        Every JavaScript environment has a global object.
+        In a browser environment the global object is the window object.
+         <h3>The browser object</h3>
+         This is a collection of methods and properties that contain information about the browser and the computer screen.
+         There is no official standard usage of the BOM
+         There are a number of objects and methods that are accepted by the BOM and all the major browsers making a sort of defacto standard.
+         These are made available through the BOM window object.
+         Every Browser pop-up and iframe  has a window object.
+         <h4>Going Global</h4>
+         <p>In the previous chapters we were introduced to var and const variables that are created without using these variables
+            Global variable s are actually properties of a global object.
+            In general you should refer to the Global Objects without using the window object.
+             if (x){
+                //do something
+             }
+             the above code will throw a reference error if x has not been identified.
+             Some functions we have already met such as parseInt()and isNaN() are actually methods  of the global object.
+
+             window.parseInt(4.2);
+             <<4
+            window.IsNaN(4.2);
+            <<false;
+p>Like variables its customary to omit them through the window object</p>
+<h4>Dialogs </h4>
+In the precious chapters we were introduced to three variables that  produce dialogs and these are alert(),confirm() and prompt(),
+All browsers support them as a means of the window object.
+The window.alert() method will pause the execution of the program will pause the execution of the program and display a message in a dialog box.
+The message is provided as an argument to the method, and undefined is always returned.
+window.alert('hello');
+<< undefined
+The  window.confirm()method will stop the execution and display a confirmation dialog that shows the message provided as an argument and giving the options of OK or cancel.
+The window.prompt(); method will stop the execution of the program. It displays a dialog that shows a message provided as an argument, as well as an input field that allows the user to enter the text.
+This text is the returned as a string, when the user clicks OK, if the user clicks Cancel, null is returned
+window.prompt('Please enter your name');
+<h4>Browser Information</h4>
+the window object has a number of properties and methods that provide information about the users browser.
+<h5>Location, location, location</h5>
+the window.location property is an object that contains information about the URL of the current page.
+It contains a number of properties that provide information about different fragments of the URL.
+The href property returns the full URL as a string.
+window.location.href<<"https://www.sitepoint.com/premium/books/JavaScript-novice-to-ninja"
+This property is a read or write property
+It can also be changed by assignment.
+if this is done the page will be reloaded using the new property.
+The protocol property returns a string describing the protocol used such as http,https,pop2,ftp etc. Note that theres a colon(:)at the end.
+The host property returns a string describing a domain of the current URL and the port number(this is often omitted if the default port 80 is not used)
+
+<h3>The Browser History</h3>
+    <p>The window.history property can be used to access any information about any previously visited pages in the browser.
+    One thing we should avoid confusing this with the new HTML5 History API
+    The window.history.length property shows how many pages have been visited before arriving at the current page.
+    The window.history.go() method can be used to go to a specific page where o is the current page.
+    There are also window.history.forward() and window.history.backward() methods that can be used to navigate forwards and backwards by one paage respectively
+     <h3>Controlling Windows</h3>
+     A new window can be opened using the window.open() method.
+     The close() method can be used to close a window assuming you have a reference to it.
+     It is also possible to  move a window using the window.moveTo()
+     This takes two parameters that are the X and Y coordinates of the screen that the window is to be moved to.
+     You can resize the window resize suing window.resizeTp() method.
+
+     <h4>Screen Information</h4>
+     <p>
+     The window screen object contains information about the screen.
+     the availHeight and availWidth can be used to find the height and width of the Screen and this excludes any operating system menus. 
+      </p>
+<h4>The Document Object</h4>
+Each window object contains a document object.
+This object has properties that deal with the page that has been loaded into the window.
+
+<h5>document.write</h5>
+The write method simply writes as string of texts to the page.
+if a page has been reloaded it will completely replace the current document.
+This method can be used within a document
+The use of the document. write() method is heavily frowned upon as it can only be realistically used by mixing the Javascript within an HTML document
+<h4>Cookies</h4>
+These are small files that are saved locally on someones computer
+A restriction of the cookies is that they can be read by a web browser
+This is to stop sites from accessing information from the preloaded webpages
+They can be used for personalizing the users browsing experience, storing user preferences and keeping track of user choices authentication and tracking users.
+their use of data storage is starting to be replaced by the new HTML5 local storage API as it allows  more data to be stored.
+<h4>Creating Cookies</h4>
+To create a cookie you assign it to Javascript cookie jar using the document.cookie property,like so,
+This acts like a special type of string
+<h5>Changing Cookie Values</h5>
+This can be changed by reassigning it to the document.cookie using the same name but a different value.
+The following code will update the value of the two cookies,
+document.cookie = 'name=Batman'
+<<"name=Batman"
+document.cookie = "city=Gotham"
+<<"city=gotham"
+<h5>Reading Cookies</h5>
+To see the current contents of the cookie jar simply enter the document.cookie:
+document.cookie:
+We can use the split method to break the sitting into an array containing each name/value pair then use for a loop to iterate through the array.
+To see the example of cookies used  in the arrays you can visit almost any website, open the browser console, and type document.cookie.
+<h3>Cookie Expiry</h3>
+they are session cookies by default,
+ This means they are deleted once a browser session is deleted.
+ cookies can be made persistent that is lasting beyond the browser session by adding expires=date; t to the end of the cookie when its set. where date is a date value in the UTC String format day,DD-Mon-YYY
+
+ <h5>HTML5 APIs</h5>
+ <p>This is the latest Hyper Text mark up language used to create web pages.
+<h3>The Data- Attribute</h3>
+<p>The data-attribute is a way of embedding data in a web page using custom attributes that are ignored by the browser.
+    They are also private to a boy so are not intended to be used by an external service-their sole purpose is to be used by a Javascript program.
+    Each element has a dataset property
+    This means they are perfect for adding data that can be used as a hook that the program utilizes to access information about a particular element on the page.
+    The names pof these attributes can be decided by the developer but they must use the following format,
+    <li>
+        starts with data
+        contain only lowercase letters, numbers,hyphens,dots,colons or underscores
+        include an optional string
+    </li>
+    The information contained in the attributes can be used to identify particular elements
+    Each element has a dataset property that can be used to access any data attributes it contains. Heres an example of a markup.
+    <div id="hero" data-powers="flight superSpeed">Superman</div>
+    the data-powers attribute can be accessed using the following code,
+    Notice that the data-prefix is dropped. To access the attribute, powers is used as if its a property of the dataset object.
+    The restriction of only using a string value can be overcome by encoding any JavaScript objector value as a JSON string, then performing type conversion later.
+    data attributes proc=vide a convenient way of adding data directly into the HTML markup, enabling a richer user experience
+    <h3>HTML5 APIs</h3>
+This specification contains a number of APIs that help to gain access to hardware such as cameras, batteries, geolocation and the graphics card.
+These are frequently used to give developers access and control new features that appear in the latest devices.
+ 
+<h4>HTML5 Web Storage</h4>
+The web storage API provides a key value store on the client's computer that is similar to using cookies but has fewer restrictions, more storage capacity and is generally easier to use.
+This makes it perfect for storing information about users.
+Also this can store app specific information that can then be used for future sessions
+The Web API storage has different features
+<li>
+    Information stored is not shared with the server on every request
+    information is available in multiple windows of the browsers(but only if the domain is the same )
+    storage capacity limit is much larger than the 4kb limit for cookies(theres no actual limit in the specification but most browsers have a limit set at 5GB per  domain)
+    any data stored does not automatically expire as it does with cookies. This potentially makes cookies a better choice for something like showing a  popup once a day.
+
+
+</li>
+if a browser supports the web storage API, the window object will have a property called local storage.
+This is a native object with a number of properties and methods used to store data.
+The following is a basic example of storing data, to save a value locally use
+localStorage.setItem('name','Walter White');
+to illustrate that its being saved locally, try completely to open the console and enter the following code in the console
+localStorage.getItem('name');
+<<'Walter White'
+Rather than using the getItem() and setItem() methods assignment can be used instead.
+The next method will use localStorage.name='Heinseburg';
+console.log('localStorage.name');
+<<'Heinseburg';
+to remove an item from localStorage use the removeItem()method.
+localStorage.removeItem('name');
+alternatively this can be done using the delete operator., delete localStorage.name;
+To completely remove everything stored in localStorage we use the clear() method
+localStorage.clear()
+ The Web Storage API provides a useful way of storing various types of information on a user's computer without the restriction of cookies
+
+ <h5>Geolocation</h5>
+ The geolocation API is used to obtain the geographical position of the device.
+ This can be used to determine the user's exact location.
+ An example oof this might bve the search function that returns results based on your location. Because of privacy concerns, permissions to use this has to be granted by the user's first.
+ If geolocation is available it will be the property of the navigator object.
+ This method has a method called getCurrentPosition that will return a position object.
+ navigator.geolocation.getCurrentPosition(youAreHere);
+ The position object passed youAreHere()has a coords property with a latitude and longitude, which together gibe the coordinates of the device
+ These can then be used  with other applications or web services such as mapping services to obtain the user's exact location.
+ In this example we will look at an alert dialog that displays the user's coordinates
+ function youAreHere(position){
+    console.log('latitude:${position.coords.latitude}, longitude: ${position.coords.longitude});
+
+ }
+ The position object has several other properties that can be used to find out the information about the location and movement of the device
+ <li>position.speed.property returns the groundspeed of the device in meters per second</li>
+   <li> position.altitude returns an estimate of the device altitude above the WGS84 ellipsoid which is a standard measurement for the center of the earth</li>
+    <li>position.headingproperty returns the direction the device is moving on.This is measured as degrees</li>.
+    <li>position.timestamp returns the time that the position information was recorded</li>.
+
+
+    </li>
+ 
+
+
+
+
+
+
+
+</p>
+
+
+ </p>
+
+
+
+
+
+
+</p>
+
+
+
+
+
+
+
+
+         </p>
+
+
+    </p>
+    
+</body>
+</html>
