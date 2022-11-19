@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validating forms</title>
+</head>
+<body>
+    <h3>
+        Client Side Form Validation
+    </h3>
+    <p>
+        Before submitting data to the server, It is important to  note that all forms and required protocol are filled accurately and in the correct format.
+        This is  called client side form validation.
+        This ensures that data submitted matches the requirements  set forth in the various form controls.
+        This is an important feature of good customer satisfaction.
+        By catching unsatisfactory data the user can then be able to fix the data  while there is still time.
+This should not be considered as an exhaustive security measure.
+Various should  always perform security checks.
+<h4><strong>What is form validations</strong></h4>
+When you go to any form in the website and enter wrong information usually the error results are returned.
+You will get messages such as 
+<li>This field is required( You cant leave this blank)
+</li>
+<li>Please enter your phone number in the format xxx-xx(a specific dat format is needed for it to be considered valid.</li>
+<li>Please enter a valid email address( the dat you entered is not in the right format)</li>
+<li>Your passwords need to be between 8 and 30 characters long and contain one upper case letter, one symbol and a number.( a very specific data format is needed)</li>
+This is what is meant by form validation.
+when you enter the dat the browser or server will check if the data is correct and in the correct format and within the constraints set by the application.
+Validation done in the browser is called client side validation.
+The one done on the server is called server side validation.
+
+if the information is correctly formatted the application allows the dat to be sent over to the server and saved in a database.
+If the information is'nt correctly formatted it give the user an error message stating or explaining what needs to be doneto correct and lets them try again.
+ The following bullet is why we always insist on form validation
+ <li>The need to get the right dat in the right format</li>
+ <li>The need to protect the user's data
+ </li>
+ <li>
+    We want to protect ourselves
+ </li>
+ <h4>Different types of form validation</h4>
+<h5>Built in form validation</h5>
+This uses HTML validation features. This generally doesn't require much JavaScript.
+This is not customizable as JavaScript validation.
+<h5>JavaScript Validation</h5>
+This is coded using JavaScript
+It is completely customizable but you need to create it all(or use a library)
+
+<h5>Using built in form validation</h5>
+One of the most significant features of modern form controls is the ability to validate most user data without relying on JavScript.
+This is done by using validation attributes which we have covered earlier on the semester.
+The following will just be a recap,
+<li>Required - specifies whether a form field needs to be filled or not before the form can be submitted</li>
+<li>Minlength and Maxlength- specifies the minimum number and maximum number that has to be filled in before  the form can be submitted.
+
+</li>
+<li>Min and Max - Specifies the minimum and maximum values of numerical output.</li>
+<li>Type - specifies whether the data needs to be a number, an email address or some other specific type of preset</li>
+<li>Pattern - specifies a regular expression that defines a pattern th entered data needs to follow</li>
+
+If the data follows the specific rules that have been said in the previous bullet points then it is said to be valid or validated.
+If not it is considered invalid.
+
+When an element is valid the following elements must be true.
+<li>
+    The element matches the :valid CSS pseudo-class which lets you apply a specific style to validate elements.
+
+</li>
+<li>If the user tries to send the data the Browser will submit the form, provided there is nothing else stopping it from doing so</li>
+
+When an element is invalid the following statements must be true.
+<li>
+    The element matches the invalid:CSS pseudo-class and sometimes other UI pseudo class. depending on the error which lets you appply a specific style.\
+
+</li>
+    <li>If the user tries to send the data, the browser will block the form and display an error message</li>
+</p>
+<h3>Using the Fetch API</h3>
+<P>
+    The Fetch API provides a provides a Javascript interface for accessing and manipulating parts of the protocol, such as requests and responses.
+    It also provides a global fetch()method that provides an easy logical way to fetch resources asynchronously across the network.
+    Fetch provides a better an alternative that can be easily used by other technologies.
+    Fetch also provides a single logical place to define other HTTP-related concepts such as CORS and extensions to HTTP
+    The fetch specification differs from the jQuery.ajax() in the following significant ways:
+    
+    <li>The promise returned from fetch() wont reject  on HTTP error status even if the response is an HTTP 404 OR 500. Instead as soon as the server responds
+with headers the promise will resolve normally(with the ok property of the response set to false if the response isnt the range 200-299) and it will only reject
+on network failure or if anything prevented the request from completing
+<li>Unless fecth() is called with the option set to include fetch()
+    wont send cookies in cross origin request
+    wont send any cookies sent back in cross origin requests
+    As of August 2018, the default credentials policy changed to same origin. Firefox was also modified in version 61.0b13
+    A basic fetch is really simple to set up.</li>
+
+    fetch('http://example.com/movies.json')
+    .then((response)=>
+    response.json())
+    .then((data)=>
+    console.log(data));
+
+    Here we are fetching the json file across the network and printing it to the console.
+    The simplest use of fetch() takes one argument - The path to the resource you want to fetch and does not directly return the JSON body content from the response object we use the json() method which returns a second promise that resolves with the result of Parsing the response body text as a Json.
+    
+    <h4>Supplying Requests option</h4>
+    <p>The fetch method can also accept a second parameter, an init object that allows you to control a number of different settings
+        See fetch() for the full options available and more details:
+        //Example post method implementation:
+        async function
+        postData(url='', data = {}){
+//Default options are marked with *
+const response= await fetch(url,{
+    method:'POST',//GET POST, DELETE,etc
+    mode: 'cors', // no-cors, *cors, 'same origin', // include, *same-origin, omit 
+    headers:{
+        'content-type':'application/json'
+        //'Content-Type':
+        'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', //manual,*follow, error 
+    referrerPolicy: 'no-referrer', *no-referrer-when-downgrade, origin,origin-when-cross-origin, same-origin,
+    strict-origin,strict-origin-when-cross-origin, unsafe-url
+    body:
+    JSON.stringify(data)//
+    body data type must match 
+"Content-Type"});
+return response.json();
+//parses JSON response into native JavaScript object
+        });
+
+        Note that mode: "no-cors" only allows a limited set of headers in the request;
+        <li>Accept</li>
+        <li>Accept-language</li>
+        <li>Content-Language</li>
+        <li>Content-Type with a value of application/x-www-form-urlencoded,multipart/form-data, or text/plain</li>
+
+        <h4>Sending a request with credentials included</h4>
+        To cause browsers to send a request with credentials included on both same origin and cross origin calls, add credentials: 
+        'include' to the init object you pass to the fetch method.
+
+      <h4>Uploading JSON data</h4>
+      Use fetch() to POST JSON-encoded data.
+
+      const data ={
+        username: 'example'
+      };
+      fetch('https://example.com/profile',{
+        method:'POST', // or 'PUT'
+        headers: {
+            'Content-Type':
+            'application/json',
+        },
+        body:
+        JSON.stringify('data')
+      })
+      .then((response)=>
+      response.json())
+      .then((data)=>{
+       console.log('Success:', data); 
+      }
+      .catch((error)=>{
+        console.error('Error:', error);
+      });
+      
+      <h4>Uploading a File</h4>
+      <p>Files can be uploaded using an HTML<input type="file"/> input element, FormData() and fetch().
+    
+   const formData = new 
+   FormData();
+   const fileField = 
+   document.querySelector('input[type=file]');
+   
+   formData. append('username','abc123');
+   formData.append('avatar', fileField.files[0]);
+    fetch('https://example.com/profile/avatar',{
+        method: 'PUT'
+        body: FormData
+    })
+    .then((response) =>
+    response.json())
+    .then((result)=>{
+        console.log('Success:',
+        result);
+    })
+    .catch((error)=>{
+        console.error('Error','error');
+
+    });
+    <h4>Checking that Fetch has been successful</h4>
+    <p>     A fetch() promise will reject with a TypeError when a network error has been encountered or CORS is misconfigured on the server side although this usually means permission issues or similar.
+        A 404 does not constitute a network error  for example
+        Anb accurate check for a successful fetch()would include checking that the promise resolved then checking that the response.ok property has a value of true
+The code would look something like this,
+
+fetch('flowers.jpg')
+.then((response)=>
+{
+    if(!response.ok){
+        throw new
+        Error('Network response was not okay');
+
+
+    }
+    return
+    response.blob();
+
+})
+then((myBlob)=>{
+    myImage.src =
+    URL.createObjectURL(myBlob);
+
+})
+.catch((error)=>{
+    console.error('There has been a problem with the fetch operation:', error);
+});
+
+
+
+
+
+
+    </p>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </p>
+
+
+
+    </p>
+
+
+
+
+
+    </li>
+
+</P>
+    
+</body>
+</html >
