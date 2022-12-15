@@ -1,13 +1,13 @@
 const textInputField = document.querySelector('text-input-field');
 const addButton =document.querySelector('#add-button');
-const todosContainer = document.querySelector('.todo-container');
+const todosContainer = document.querySelector('.todos-container');
 
 addButton.addEventListener('click' ,() =>{
 if (textInputField.value.trim().length == '')
 return;
 
 const todoItemContainer = document.createElement('div');
-todoItemContainer.classList.add('todo-item-container');
+todosItemContainer.classList.add('todo-item-container');
 
 todosContainer.appendChild(todoItemContainer);
 
@@ -21,7 +21,7 @@ editButton.id =' edit-button';
 const editText= document.createElement('edit');
 editButton.appendChild('editText');
 todoItemContainer.appendChild(editButton);
-editButton= addEventListener('click', ( ))=>{
+editButton= addEventListener('click', '()')=>{
     textInputField.value =todoText.innerText;
     const parent = editButton.parentElement;
     parent.parentElement.removeChild(parent);
